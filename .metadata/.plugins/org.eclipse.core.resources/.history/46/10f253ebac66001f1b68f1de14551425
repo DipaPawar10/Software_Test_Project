@@ -1,0 +1,56 @@
+package DataDrivenTestingDemo;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+public class DataDrivenTestingExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		XSSFWorkbook ExcelWBook = null;
+		XSSFSheet ExcelWSheet = null;
+		XSSFRow Row;
+		XSSFCell Cell;
+		
+		//create an object of file class to open an file
+		File excelFile =  new File("E:\\TestDataFile.xlsx");
+		FileInputStream inputStream;
+		//create an object of FileInputStream to read data from file
+		try {
+		 inputStream = new FileInputStream(excelFile);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//Excel->workbook>Sheet->row->cell
+		//Create object of XSSworkbook to handle xslx file
+		ExcelWBook = new XSSFWorkbook(inputStream);
+		
+		//to access workbook sheet
+		ExcelWSheet = ExcelWBook.getSheetAt(0);
+		
+		//get total row count
+		int ttlRows = ExcelWSheet.getLastRowNum()+1;
+		
+		int ttlCells = ExcelWSheet.getRow(0).getLastCellNum()+1;
+		
+		for(int currentRow = 0; currentRow<ttlRows; currentRow++) 
+		{
+			for(int currentCell = 0; currentCell<ttlCells; currentCell++) 
+			{
+				System.out.print(ExcelWSheet.getRow(currentRow).getCell(currentCell)).toString();
+				System.out.print("\t");
+			}
+		}
+		System.out.println();
+	}
+	ExcelWBook.close();
+
+}
+

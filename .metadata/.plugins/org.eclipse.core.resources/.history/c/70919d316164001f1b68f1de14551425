@@ -1,0 +1,23 @@
+package CookiesDemo;
+
+import java.util.Set;
+
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+
+public class CookiesExample {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\Lenovo\\Downloads\\drivers\\geckodriver-v0.35.0-win64\\geckodriver.exe");
+		WebDriver driver= new FirefoxDriver();
+		driver.get("https://www.amazone.in/");
+		//capture all the cookies
+		Set <Cookie> cookiesList = driver.manage().getCookies();
+		
+		//print size/number of cookies
+		System.out.println(cookiesList.size());
+		}
+
+}

@@ -1,0 +1,14 @@
+package TestNgExecuteFailedTestCases;
+import org.testng.Assert;
+import org.testng.annotations.*;
+
+public class FailedTestCaseExample {
+	@Test()
+	public void TestCase01() {
+		Assert.assertTrue(false);
+	}
+
+	public void TestCase02() {
+		Assert.assertTrue(false);
+	}
+}

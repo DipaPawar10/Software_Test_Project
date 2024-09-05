@@ -1,0 +1,12 @@
+package TestNgExecuteFailedTestCases;
+
+import org.testng.IRetryAnalyzer;
+
+public class RetrryAnalyzer implements IRetryAnalyzer{
+	//counter to keep track of retry attempts
+	int counterForRetryAttempts = 0;
+	
+	//set max limit for every retry
+	int setMaxLimitForRetry = 3;
+
+}
